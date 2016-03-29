@@ -1,0 +1,44 @@
+<div layout="vertical" layout-fill>
+
+  <md-content>
+    <header>
+    </header>
+
+    <section class="jumbotron">
+      <h1>Welcome to Angular Meet Up!</h1>
+      <div layout-gt-sm="row" ng-if="main.visible()">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Username</label>
+          <input ng-model="main.username">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password</label>
+          <input type="password"ng-model="main.password">
+        </md-input-container>
+      </div>
+      <md-button class="md-raised animated infinite" ng-if="main.visible()" ng-click="main.register()">Register</md-button>
+      <md-button class="md-raised animated infinite" ng-if="main.visible()" ng-click="main.login()">Login</md-button>
+      <md-button class="md-raised animated infinite" ng-if="!main.visible()" ng-click="main.logout()">LogOut</md-button>
+      <md-button class="md-raised animated infinite" ng-click="main.logout()" ng-show="main.isAuthed()">Logout</md-button>
+
+      <md-button class="md-raised animated infinite" ng-click="main.getQuote()">get quote</md-button>
+      <p>
+        Speaker: <acme-malarkey extra-values="['Jesus Mario Rivas Bonilla']"></acme-malarkey>
+      </p>
+    </section>
+
+    <div class="techs" layout-align="center">
+      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
+        <md-card-content>
+          <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
+          <h3 class="md-title">{{ awesomeThing.title }}</h3>
+          <p>{{ awesomeThing.description }}</p>
+        </md-card-content>
+        <div class="md-action-buttons">
+          <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
+        </div>
+      </md-card>
+    </div>
+  </md-content>
+
+</div>
